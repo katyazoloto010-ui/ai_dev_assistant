@@ -79,12 +79,29 @@ textarea {
 
 <script>
 let tg = window.Telegram.WebApp;
+
 tg.expand();
 
+// 👇 ЭТО КЛЮЧЕВОЕ
+tg.MainButton.setText("Отправить");
+tg.MainButton.show();
+
+let selectedData = "";
+
+// выбор языка / уровня
 function send(data) {
-    tg.sendData(data);
+    selectedData = data;
+    console.log("Выбрано:", data);
 }
 
+// отправка через кнопку Telegram
+tg.MainButton.onClick(function () {
+    if (selectedData) {
+        tg.sendData(selectedData);
+    }
+});
+
+// отправка кода
 function sendCode() {
     let code = document.getElementById("code").value;
     tg.sendData("code:" + code);
