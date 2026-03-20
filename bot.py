@@ -1,15 +1,19 @@
 import asyncio
 import random
+import os
+
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import Command
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 from groq import Groq
-import config
 
-bot = Bot(token=config.BOT_TOKEN)
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+GROQ_KEY = os.getenv("GROQ_KEY")
+
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
-client = Groq(api_key=config.GROQ_KEY)
+client = Groq(api_key=GROQ_KEY)
 
 # ===== ДАННЫЕ =====
 user_levels = {}
