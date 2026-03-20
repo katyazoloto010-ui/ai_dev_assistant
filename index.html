@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AI Dev Assistant</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+<h2>👨‍💻 AI Dev Assistant</h2>
+
+<p>Выбери язык:</p>
+
+<button onclick="send('Python')">🐍 Python</button>
+<button onclick="send('JS')">🌐 JavaScript</button>
+<button onclick="send('PHP')">🐘 PHP</button>
+
+<br><br>
+
+<p>Выбери уровень:</p>
+
+<button onclick="send('Новичок')">🟢 Новичок</button>
+<button onclick="send('Средний')">🟡 Средний</button>
+<button onclick="send('Продвинутый')">🔴 Продвинутый</button>
+
+<br><br>
+
+<button onclick="send('task')">📚 Получить задание</button>
+
+<script>
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function send(data) {
+        tg.sendData(data);
+    }
+</script>
+
+</body>
+</html>
