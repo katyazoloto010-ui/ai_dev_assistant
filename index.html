@@ -82,29 +82,19 @@ let tg = window.Telegram.WebApp;
 
 tg.expand();
 
-// 👇 ЭТО КЛЮЧЕВОЕ
-tg.MainButton.setText("Отправить");
-tg.MainButton.show();
-
-let selectedData = "";
-
-// выбор языка / уровня
+// отправка данных
 function send(data) {
-    selectedData = data;
-    console.log("Выбрано:", data);
+    console.log("SEND:", data);
+    tg.sendData(data);
+    tg.close(); // 👈 ВАЖНО
 }
-
-// отправка через кнопку Telegram
-tg.MainButton.onClick(function () {
-    if (selectedData) {
-        tg.sendData(selectedData);
-    }
-});
 
 // отправка кода
 function sendCode() {
     let code = document.getElementById("code").value;
+    console.log("CODE:", code);
     tg.sendData("code:" + code);
+    tg.close(); // 👈 ВАЖНО
 }
 </script>
 
